@@ -30,3 +30,4 @@ Route::get('/', function (Request $request) {
 });
 
 Route::get('/websites', 'API\WebsiteController@show');
+Route::post('/posts/{website}/create', 'API\PostController@create');

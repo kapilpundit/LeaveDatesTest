@@ -5,20 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * Website Modal class
- */
-class Website extends Model
+class Post extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'url',
+        'website_id',
+        'title',
+        'body'
     ];
 
-    public function posts()
+    public function website()
     {
-        return $this->hasMany(Post::class);
+        return $this->belongsTo(Website::class);
     }
 }
