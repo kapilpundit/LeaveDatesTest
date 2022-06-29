@@ -28,3 +28,5 @@ Route::get('/', function (Request $request) {
         200
     );
 });
+
+Route::get('/websites', 'API\WebsiteController@show');
