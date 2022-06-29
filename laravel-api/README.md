@@ -16,3 +16,16 @@ This Laravel project serves the Leave Dates backend APIs:
     ````
 - Use `php artisan migrate` to run database migrations.
 - Use `php artisan db:seed` to seed the website data.
+
+
+### Testing
+ - A `.env.testing` file is added for executing tests.
+ - Create `leave_dates_testing` database in MySQL.
+ - Run migrations.
+    ````
+    php artisan migrate --env=testing
+    ````
+- Run `php artisan test` command to execute all tests. Or use the `--filter` parameter to limit to a particular test.
+    ```
+    php artisan test --filter=testWebsites
+    ```
