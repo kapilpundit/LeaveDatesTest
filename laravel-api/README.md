@@ -15,3 +15,4 @@ This Laravel project serves the Leave Dates backend APIs:
     DB_PASSWORD=secret
     ````
 - Use `php artisan migrate` to run database migrations.
+- Use `php artisan db:seed` to seed the website data.
