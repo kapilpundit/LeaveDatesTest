@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class PostPublishedMail extends Mailable
+class PostPublishedMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
@@ -19,7 +19,7 @@ class PostPublishedMail extends Mailable
      */
     public function __construct(public Post $post)
     {
-        //
+        info("PostPublishedMail user");
     }
 
     /**

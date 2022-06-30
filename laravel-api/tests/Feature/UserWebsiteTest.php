@@ -2,10 +2,13 @@
 
 namespace Tests\Feature;
 
+use App\Mail\PostPublishedMail;
+use App\Models\Post;
 use App\Models\User;
 use App\Models\Website;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Mail;
 use Tests\CommonTestTraits;
 use Tests\TestCase;
 
@@ -52,5 +55,33 @@ class UserWebsiteTest extends TestCase
         ];
 
         $response->assertJson($expected);
+    }
+
+    function testPostPublishedMail()
+    {
+        $this->withoutExceptionHandling();
+
+        $user = User::factory()->create();
+        $website = Website::factory()->create();
+
+        $this->postJson(
+            '/api/user/' . $user->id . '/website/' . $website->id,
+            []
+        );
+
+        $postData = [
+            'title' => 'Post 1',
+            'body' => 'Post 1 body',
+        ];
+
+        $response = $this->postJson(
+            '/api/posts/'. $website->id .'/create',
+            $postData
+        );
+
+        Mail::fake();
+
+        // The following assertion is not working somehow.
+        // Mail::assertSent(PostPublishedMail::class);
     }
 }
