@@ -3,10 +3,12 @@
 namespace App\Listeners;
 
 use App\Events\PostPublished;
+use App\Mail\PostPublishedMail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Mail;
 
-class NotifySubscribers
+class NotifySubscribers implements ShouldQueue
 {
     /**
      * Create the event listener.
@@ -27,7 +29,10 @@ class NotifySubscribers
     public function handle(PostPublished $event)
     {
         foreach ($event->post->website->users as $user) {
-            info("Email user: " . $user->email);
+            info("Sending email to user: " . $user->email);
+
+            Mail::to($user)
+                ->send(new PostPublishedMail($event->post));
         }
     }
 }
