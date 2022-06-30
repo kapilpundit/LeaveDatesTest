@@ -27,7 +27,7 @@ class WebsiteController extends Controller
     public function subscribe(User $user, Website $website)
     {
         if (! $user->websites->contains($website->id)) {
-            $user->websites()->attach($user->id);
+            $user->websites()->attach($website->id);
         }
 
         return response()
