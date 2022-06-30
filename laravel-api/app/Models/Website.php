@@ -21,4 +21,13 @@ class Website extends Model
     {
         return $this->hasMany(Post::class);
     }
+
+
+    /**
+     * The user that belong to the website.
+     */
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

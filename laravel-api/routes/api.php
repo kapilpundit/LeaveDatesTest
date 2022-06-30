@@ -31,3 +31,4 @@ Route::get('/', function (Request $request) {
 
 Route::get('/websites', 'API\WebsiteController@show');
 Route::post('/posts/{website}/create', 'API\PostController@create');
+Route::post('/user/{user}/website/{website}', 'API\WebsiteController@subscribe');
