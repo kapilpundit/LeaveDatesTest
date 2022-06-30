@@ -35,5 +35,22 @@ class UserWebsiteTest extends TestCase
         );
 
         $response->assertStatus(200);
+
+        $expected = [
+            'user' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'websites' => [
+                    [
+                        'id' => $website->id,
+                        'name' => $website->name,
+                        'url' => $website->url,
+                    ]
+                ],
+            ]
+        ];
+
+        $response->assertJson($expected);
     }
 }

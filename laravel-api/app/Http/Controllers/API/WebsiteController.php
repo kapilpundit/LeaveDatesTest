@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Models\Website;
 use Illuminate\Http\Request;
@@ -30,7 +31,7 @@ class WebsiteController extends Controller
         return response()
                 ->json(
                     [
-
+                        'user' => new UserResource($user),
                     ],
                     200
                 );
