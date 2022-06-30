@@ -1,4 +1,6 @@
 # vue-frontend
+Frontend app for Leave Dates.
+Use the following commands to run this project.
 
 ## Project setup
 ```
