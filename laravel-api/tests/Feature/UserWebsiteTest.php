@@ -17,6 +17,11 @@ class UserWebsiteTest extends TestCase
     use RefreshDatabase;
     use CommonTestTraits;
 
+    /**
+     * Test setup() method.
+     *
+     * @return void
+     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -57,6 +62,12 @@ class UserWebsiteTest extends TestCase
         $response->assertJson($expected);
     }
 
+    /**
+     * Test to check if a mail was sent to the user who was subscribed to the
+     * website to which a new post was published.
+     *
+     * @return void
+     */
     function testPostPublishedMail()
     {
         $this->withoutExceptionHandling();

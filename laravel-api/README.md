@@ -1,6 +1,6 @@
 ## Leave Dates Backend (Laravel) API
 
-This Laravel project serves the Leave Dates backend APIs:
+This Laravel (9) project serves the Website Subscription app's backend APIs:
 
 ### Setup
 - Use `composer install` command to install composer dependencies.
@@ -16,6 +16,18 @@ This Laravel project serves the Leave Dates backend APIs:
     ````
 - Use `php artisan migrate` to run database migrations.
 - Use `php artisan db:seed` to seed the website data.
+- Configure Email service to send mails to the users, when a new post is published under a website.
+    - You can use [Mailtrap](https://mailtrap.io/) for testing the outbound emails with the following example configurations.
+    ```
+    MAIL_MAILER=smtp
+    MAIL_HOST=smtp.mailtrap.io
+    MAIL_PORT=2525
+    MAIL_USERNAME=********
+    MAIL_PASSWORD=********
+    MAIL_ENCRYPTION=tls
+    MAIL_FROM_ADDRESS="hello@example.com"
+    MAIL_FROM_NAME="${APP_NAME}"
+    ```
 
 
 ### Testing
@@ -29,3 +41,23 @@ This Laravel project serves the Leave Dates backend APIs:
     ```
     php artisan test --filter=testWebsites
     ```
+
+### APIs
+Following is the list of APIs used in this project. Here ${APP_URL} is the url/domain, which could be *http://localhost* if you are testing this on your local.
+ - **GET** `${APP_URL}/api/websites`
+    <br />
+    Get list of all websites.
+ - **GET** `${APP_URL}/api/users`
+    <br />
+    Get list of all users.
+ - **POST** `${APP_URL}/api/posts/<website_id>/create`
+    <br />
+    Create a new post under a website.
+    Parameters:
+    - `website_id` - Auto increment primary key of the website record under which we are creating a new post.
+ - **POST** `${APP_URL}/api/user/<user_id>/website/<website_id>`
+    Subscribe User To Website.
+    Parameters:
+    - `user_id` - Auto increment primary key of the user record which we are adding to a particular website's subscribers list.
+    - `website_id` - Auto increment primary key of the website record to which we are subscribing a particular user.
+    
