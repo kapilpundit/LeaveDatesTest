@@ -28,6 +28,8 @@ This Laravel (9) project serves the Website Subscription app's backend APIs:
     MAIL_FROM_ADDRESS="hello@example.com"
     MAIL_FROM_NAME="${APP_NAME}"
     ```
+ - Run `php artisan serve` to run this backend service.
+ - Now the backend APIs are available at `http://localhost:8000`
 
 
 ### Testing
@@ -43,19 +45,19 @@ This Laravel (9) project serves the Website Subscription app's backend APIs:
     ```
 
 ### APIs
-Following is the list of APIs used in this project. Here ${APP_URL} is the url/domain, which could be *http://localhost* if you are testing this on your local.
- - **GET** `${APP_URL}/api/websites`
+Following is the list of APIs used in this project.
+ - **GET** `http://localhost:8000/api/websites`
     <br />
     Get list of all websites.
- - **GET** `${APP_URL}/api/users`
+ - **GET** `http://localhost:8000/api/users`
     <br />
     Get list of all users.
- - **POST** `${APP_URL}/api/posts/<website_id>/create`
+ - **POST** `http://localhost:8000/api/posts/<website_id>/create`
     <br />
     Create a new post under a website.
     Parameters:
     - `website_id` - Auto increment primary key of the website record under which we are creating a new post.
- - **POST** `${APP_URL}/api/user/<user_id>/website/<website_id>`
+ - **POST** `http://localhost:8000/api/user/<user_id>/website/<website_id>`
     Subscribe User To Website.
     Parameters:
     - `user_id` - Auto increment primary key of the user record which we are adding to a particular website's subscribers list.
